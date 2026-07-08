@@ -76,7 +76,9 @@ body {
 h1,
 h2,
 h3,
-h4, span  {
+h4, 
+h5, 
+span  {
   font-family: var(--font-orbitron), sans-serif;
 }
 
@@ -84,7 +86,7 @@ h1 {
   font-size: 4.3vw;
   line-height: 100%;
   font-weight: 700;
-  letter-spacing: 1px;
+
 
   span {
     font-size: 4.3vw;
@@ -94,9 +96,10 @@ h1 {
 }
 
 h2 {
-  font-size: 3.646vw;
+  font-size: 3.5vw;
   line-height: 100%;
-  font-weight: 400 !important;
+  font-weight: 600;
+
 
   span {
     font-size: 3.646vw;
@@ -108,10 +111,16 @@ h2 {
 }
 
 h3 {
-  font-size: 2.4vw;
+  font-size: 2.2vw;
   letter-spacing: 0.1vw;
   line-height: 125%;
-  font-weight: 400 !important;
+  font-weight: 400;
+  span {
+    font-size: 2.2vw;
+    font-weight: 400;
+    color: var(--primary);
+  }
+
 }
 
 h4 {
@@ -119,6 +128,23 @@ h4 {
   line-height: 125%;
   letter-spacing: 0.1vw;
   font-weight: 300;
+  span {
+    font-size: 1.823vw;
+    font-weight: 500;
+    color: var(--foreground);
+  }
+}
+
+h5 {
+  font-size: 1.1vw;
+  line-height: 125%;
+  letter-spacing: 0.1vw;
+  font-weight: 300;
+  span {
+    font-size: 1.1vw;
+    font-weight: 500;
+    color: var(--foreground);
+  }
 }
 
 
@@ -135,16 +161,21 @@ p {
 }
 
 span {
-  letter-spacing: 0.15vw;
-  font-size: 0.8vw;
+  letter-spacing: 0.1vw;
+  font-size: 0.65vw;
+  font-weight: 500;
 }
 
 @media (max-width: 1024px) {
+  .wrapper {
+    padding: 2vw 4vw;
+
+  }
+
   h1 {
     font-size: 34px;
     line-height: 100%;
-    font-weight: 500 !important;
-    letter-spacing: 1px;
+    font-weight: 700;
 
     span {
       font-size: 34px;
@@ -155,7 +186,7 @@ span {
   h2 {
     font-size: 30px;
     line-height: 100%;
-    font-weight: 400 !important;
+    font-weight: 600;
 
     span {
       font-size: 30px;
@@ -164,15 +195,19 @@ span {
 
   h3 {
     font-size: 24px;
-
-    line-height: 100%;
-    font-weight: 400 !important;
+    line-height: 125%;
+    font-weight: 400;
   }
 
   h4 {
     font-size: 18px;
-    line-height: 100%;
-    font-weight: 500 !important;
+    line-height: 125%;
+    font-weight: 300;
+
+
+    span {
+      font-size: 18px;
+    }
   }
 
 
@@ -185,5 +220,9 @@ span {
     font-size: 12px;
     line-height: 125% !important;
     color: var(--secondary);
+  }
+
+  span {
+    font-size: 10px;
   }
 }
