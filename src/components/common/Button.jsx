@@ -2,7 +2,18 @@ import { ArrowUpRight } from "lucide-react";
 import { forwardRef } from "react";
 
 const wrapperBaseClasses =
-    "group inline-flex items-stretch border border-[#d9d9d9] bg-[#f1f1f1] text-foreground transition-colors duration-200 hover:bg-[#ececec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 disabled:pointer-events-none disabled:opacity-60";
+    "group flex justify-between items-stretch transition-colors cursor-pointer duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 disabled:pointer-events-none disabled:opacity-60";
+
+const variantClasses = {
+    default: {
+        wrapper: "border border-[#d9d9d9] bg-[#f1f1f1] text-foreground hover:bg-[#ececec]",
+        icon: "border-l border-[#d9d9d9] bg-primary text-white group-hover:bg-primary/90",
+    },
+    black: {
+        wrapper: "border border-white/15 bg-gray-100/20 text-white hover:bg-gray-900",
+        icon: "border-l border-white/15 bg-primary text-white group-hover:bg-primary/90",
+    },
+};
 
 const labelSizeClasses = {
     sm: "px-4 py-2 text-xs md:text-sm",
@@ -20,6 +31,7 @@ const Button = forwardRef(function Button(
     {
         children,
         className = "",
+        variant = "default",
         size = "md",
         type = "button",
         loading = false,
@@ -32,6 +44,7 @@ const Button = forwardRef(function Button(
     ref
 ) {
     const activeSize = labelSizeClasses[size] ? size : "md";
+    const activeVariant = variantClasses[variant] ? variant : "default";
     const isDisabled = disabled || loading;
 
     return (
@@ -40,14 +53,14 @@ const Button = forwardRef(function Button(
             type={type}
             disabled={isDisabled}
             aria-busy={loading}
-            className={`${wrapperBaseClasses} ${fullWidth ? "w-full" : ""} ${className}`.trim()}
+            className={`${wrapperBaseClasses} ${variantClasses[activeVariant].wrapper} ${fullWidth ? "w-full" : ""} ${className}`.trim()}
             {...props}
         >
             <span className={`${labelSizeClasses[activeSize]} font-display tracking-[0.08em] leading-none ${fullWidth ? "flex-1 text-left" : ""}`}>
                 {children}
             </span>
             {showRightIcon && (
-                <span className={`${iconSizeClasses[activeSize]} flex items-center justify-center border-l border-[#d9d9d9] bg-primary text-white transition-colors duration-200 group-hover:bg-primary/90`}>
+                <span className={`${iconSizeClasses[activeSize]} flex items-center justify-center transition-colors duration-200 ${variantClasses[activeVariant].icon}`}>
                     {loading ? (
                         <span
                             className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent"
