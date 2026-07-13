@@ -38,7 +38,7 @@ export default function TextRevealScroll({
 
             split.words.forEach((word) => {
                 const wrapper = document.createElement("div");
-                wrapper.className = "text-reveal-mask";
+                wrapper.className = "text-reveal-mask py-1";
                 wrapper.style.display = "inline-block";
                 wrapper.style.overflow = "hidden";
                 wrapper.style.verticalAlign = "bottom";
@@ -56,12 +56,13 @@ export default function TextRevealScroll({
                 opacity: 0,
                 stagger: animStagger,
                 duration: animDuration,
-                ease: "none",
+                ease: "power3.out",
                 scrollTrigger: {
                     trigger: textRef.current,
                     start: animStart,
                     end: animEnd,
                     scrub: 3,
+                    markers: true,
                 },
             });
         }, textRef);

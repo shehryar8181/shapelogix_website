@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Button from "../common/Button";
+import TextRevealScroll from "../providers/TextRevealScroll";
+import ImageRevealScroll from "../providers/ImageRevealScroll";
 
 const services = [
     {
@@ -72,48 +73,81 @@ export default function Services() {
         <section className="services wrapper relative py-20! md:py-30! lg:py-[10vw]! bg-black">
             <div className="relative z-11 grid grid-cols-1 lg:grid-cols-[1fr_3fr] lg:items-start gap-8 lg:gap-[2vw]">
                 <div className="lg:sticky lg:top-1/2 lg:-translate-y-1/2 lg:self-start h-fit">
-                    <span className="text-secondary">// Shapelogix services</span>
-                    <h2 className="text-white mt-3 mb-4 lg:mb-[1.5vw]">Our Focus</h2>
-                    <p className="text-secondary">
-                        A complete yet focused range of services, created to support ambitious brands at every stage of their growth journey.
-                    </p>
+                    <TextRevealScroll
+                        as="span"
+                        start="top 85%"
+                        className="text-secondary"
+                        text="// Shapelogix services"
+                    />
+                    <TextRevealScroll
+                        as="h2"
+                        start="top 85%"
+                        className="text-white mt-3 mb-4 lg:mb-[1.5vw] block!"
+                        text="Our Focus"
+                    />
+                    <TextRevealScroll
+                        as="p"
+                        start="top 85%"
+                        className="text-secondary block"
+                        text="A complete yet focused range of services, created to support ambitious brands at every stage of their growth journey."
+                    />
                 </div>
 
                 <div>
-                    {services.map((service, index) => (
+                    {services.map((service) => (
                         <div
                             key={service.number}
                             className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_3.2fr] items-start"
                         >
                             <div className="flex items-center gap-2 text-white pt-10 lg:pt-[3vw]">
                                 <span className="text-white text-[10px] lg:text-[0.55vw]">◆</span>
-                                <h5 className="text-white">{service.number}</h5>
+                                <TextRevealScroll
+                                    as="h5"
+                                    start="top 85%"
+                                    className="text-white"
+                                    text={service.number}
+                                />
                             </div>
 
-                            <div className="w-[90px] h-[90px] lg:w-[7.5vw] lg:ms-20 lg:h-[7.5vw] rounded-lg mt-10 lg:mt-[3vw] lg:rounded-[0.5vw]">
-                                {/* <Image
-                                    src={service.image}
-                                    alt={service.title}
-                                    width={46}
-                                    height={46}
-                                    className="h-full w-full object-contain opacity-90"
-                                /> */}
-                                <img src={service.image} alt={service.title} className="h-full w-full object-cover" />
-                            </div>
+                            <ImageRevealScroll
+                                src={service.image}
+                                alt={service.title}
+                                start="top 85%"
+                                wrapperClassName="w-[90px] h-[90px] lg:w-[7.5vw] lg:ms-20 lg:h-[7.5vw] rounded-lg mt-10 lg:mt-[3vw] lg:rounded-[0.5vw]"
+                                className="h-full w-full object-cover"
+                            />
 
-                            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-[1vw] pt-8 pb-10 lg:pt-[3vw] lg:pb-[5vw] bg-black border border-l-0 ms-0.5 border-borders/15 border-dashed`}>
-                                <h5 className="text-white md:max-w-[14ch]">{service.title}</h5>
-                                <p className="text-secondary md:max-w-[33ch]">{service.description}</p>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-[1vw] pt-8 pb-10 lg:pt-[3vw] lg:pb-[5vw] bg-black border border-l-0 ms-0.5 border-borders/15 border-dashed">
+                                <TextRevealScroll
+                                    as="h5"
+                                    start="top 85%"
+                                    className="text-white md:max-w-[14ch] block"
+                                    text={service.title}
+                                />
+                                <TextRevealScroll
+                                    as="p"
+                                    start="top 85%"
+                                    className="text-secondary md:max-w-[33ch] block"
+                                    text={service.description}
+                                />
                             </div>
                         </div>
                     ))}
 
                     <div className="grid md:grid-cols-3 gap-3 mt-10 lg:mt-[3vw]">
-                        <h5 className="text-white! col-span-2 lg:max-w-2/3">
-                            Our approach is about cutting through noise and building brands that feel clear, confident, and unmistakably their own.
-                        </h5>
+                        <TextRevealScroll
+                            as="h5"
+                            start="top 85%"
+                            className="text-white! col-span-2 lg:max-w-2/3 block"
+                            text="Our approach is about cutting through noise and building brands that feel clear, confident, and unmistakably their own."
+                        />
                         <div className="flex flex-col gap-2 items-start justify-start">
-                            <span className="text-white!">Let's turn idea into impact</span>
+                            <TextRevealScroll
+                                as="span"
+                                start="top 85%"
+                                className="text-white! block"
+                                text="Let's turn idea into impact"
+                            />
                             <Button variant="black" className="w-full">
                                 Get In Touch
                             </Button>
