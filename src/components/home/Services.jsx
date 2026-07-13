@@ -75,19 +75,16 @@ export default function Services() {
                 <div className="lg:sticky lg:top-1/2 lg:-translate-y-1/2 lg:self-start h-fit">
                     <TextRevealScroll
                         as="span"
-                        start="top 85%"
                         className="text-secondary"
                         text="// Shapelogix services"
                     />
                     <TextRevealScroll
                         as="h2"
-                        start="top 85%"
                         className="text-white mt-3 mb-4 lg:mb-[1.5vw] block!"
                         text="Our Focus"
                     />
                     <TextRevealScroll
                         as="p"
-                        start="top 85%"
                         className="text-secondary block"
                         text="A complete yet focused range of services, created to support ambitious brands at every stage of their growth journey."
                     />
