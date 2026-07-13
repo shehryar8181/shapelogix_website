@@ -49,7 +49,7 @@ body {
   --border-color: var(--border-color);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -57,7 +57,7 @@ body {
     --secondary: #D9D9D9;
 
   }
-}
+} */
 
 body {
   background: var(--background);
@@ -76,9 +76,9 @@ body {
 h1,
 h2,
 h3,
-h4, 
-h5, 
-span  {
+h4,
+h5,
+span {
   font-family: var(--font-orbitron), sans-serif;
 }
 
@@ -115,6 +115,7 @@ h3 {
   letter-spacing: 0.1vw;
   line-height: 125%;
   font-weight: 400;
+
   span {
     font-size: 2.2vw;
     font-weight: 400;
@@ -128,10 +129,18 @@ h4 {
   line-height: 125%;
   letter-spacing: 0.1vw;
   font-weight: 300;
+
   span {
     font-size: 1.823vw;
     font-weight: 500;
     color: var(--foreground);
+  }
+
+  small {
+    font-size: 1.823vw;
+    font-weight: 500;
+    /* color: var(--foreground); */
+    
   }
 }
 
@@ -140,6 +149,7 @@ h5 {
   line-height: 125%;
   letter-spacing: 0.1vw;
   font-weight: 300;
+
   span {
     font-size: 1.1vw;
     font-weight: 500;
@@ -155,12 +165,21 @@ li {
 
 p {
   font-size: 1vw;
-  line-height: 145% !important;
+  line-height: 125%;
   color: var(--secondary);
   /* letter-spacing: 0.05vw; */
 }
 
-span {
+input,
+textarea {
+  font-size: 0.8vw;
+  letter-spacing: 0 !important;
+
+  color: var(--secondary);
+}
+
+span,
+label {
   letter-spacing: 0.1vw;
   font-size: 0.65vw;
   font-weight: 500;
@@ -197,6 +216,7 @@ span {
     font-size: 24px;
     line-height: 125%;
     font-weight: 400;
+
     span {
       font-size: 24px;
       font-weight: 400;
@@ -220,6 +240,7 @@ span {
     line-height: 125%;
     letter-spacing: 0.1vw;
     font-weight: 300;
+
     span {
       font-size: 14px;
       font-weight: 500;
@@ -239,7 +260,18 @@ span {
     color: var(--secondary);
   }
 
-  span {
+  input,
+  textarea {
+    font-size: 12px;
+    letter-spacing: 0 !important;
+
+    color: var(--secondary);
+  }
+
+  span,
+  label {
+    letter-spacing: 0.1vw;
     font-size: 10px;
+    font-weight: 500;
   }
 }

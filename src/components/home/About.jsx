@@ -1,4 +1,5 @@
 import Button from "../common/Button";
+import TextRevealScroll from "../providers/TextRevealScroll";
 
 const stats = [
     { label: "Years of Experience", value: "20 +", desc: "Built on years of real-world projects" },
@@ -11,11 +12,20 @@ export default function About() {
     return (
         <section className="about wrapper relative pt-20! md:pt-30! lg:pt-[7vw]! bg-background">
             <div className="flex flex-col md:flex-row justify-between">
-                <span className="text-secondary py-[3vw]">// Introduction Shapelogix</span>
+                <TextRevealScroll
+                    as="span"
+                    start="top 85%"
+                    className="text-secondary py-10 lg:py-[3vw]"
+                    text="// Introduction Shapelogix"
+                />
+                {/* <span className="text-secondary py-[3vw]">// Introduction Shapelogix</span> */}
                 <div className="md:max-w-[75%] bg-background py-[3vw] md:border border-dashed md:border-l-0 border-borders relative z-11">
-                    <h4 className="text-secondary">
-                        We engineer high-performance digital <span className="text-primary">ecosystems</span>. From deep tech integrations like <span>custom AI</span> and automated <span>DevOps</span> to flawless <span>UI/UX</span>, we design and build the resilient software architecture that modern enterprises scale on.
-                    </h4>
+                    <TextRevealScroll
+                        as="h4"
+                        start="top 85%"
+                        className="text-secondary"
+                        text="We engineer high-performance digital ecosystems. From deep tech integrations like custom AI and automated DevOps to flawless UI/UX, we design and build the resilient software architecture that modern enterprises scale on."
+                    />
                     <Button className="mt-7 md:mt-10 lg:mt-[1.5vw]">
                         Inside the Shapelogix
                     </Button>

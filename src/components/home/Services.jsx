@@ -69,7 +69,7 @@ const services = [
 
 export default function Services() {
     return (
-        <section className="services wrapper relative pt-20! md:pt-30! lg:pt-[8vw]! bg-black">
+        <section className="services wrapper relative py-20! md:py-30! lg:py-[10vw]! bg-black">
             <div className="relative z-11 grid grid-cols-1 lg:grid-cols-[1fr_3fr] lg:items-start gap-8 lg:gap-[2vw]">
                 <div className="lg:sticky lg:top-1/2 lg:-translate-y-1/2 lg:self-start h-fit">
                     <span className="text-secondary">// Shapelogix services</span>

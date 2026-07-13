@@ -56,14 +56,15 @@ const Button = forwardRef(function Button(
             className={`${wrapperBaseClasses} ${variantClasses[activeVariant].wrapper} ${fullWidth ? "w-full" : ""} ${className}`.trim()}
             {...props}
         >
-            <span className={`${labelSizeClasses[activeSize]} font-display tracking-[0.08em] leading-none ${fullWidth ? "flex-1 text-left" : ""}`}>
+            <span className={`${labelSizeClasses[activeSize]} whitespace-nowrap text-start lg:py-[1vw] font-display tracking-[0.08em] leading-none ${fullWidth ? "flex-1 text-left" : ""}`}>
                 {children}
             </span>
+            
             {showRightIcon && (
                 <span className={`${iconSizeClasses[activeSize]} flex items-center justify-center transition-colors duration-200 ${variantClasses[activeVariant].icon}`}>
                     {loading ? (
                         <span
-                            className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent"
+                            className="size-4 animate-spin rounded-full"
                             aria-hidden="true"
                         />
                     ) : (

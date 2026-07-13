@@ -1,14 +1,20 @@
 import Image from "next/image";
+import TextRevealScroll from "../providers/TextRevealScroll";
 
 export default function WhyChoose() {
     return (
         <section className="why-choose wrapper relative pt-20! md:pt-30! lg:pt-[10vw]! bg-background">
             <div className="grid md:grid-cols-4 gap-4 justify-between mb-3 lg:mb-[2vw]">
                 <span className="text-secondary pt-2">// Why Shapelogix</span>
-                <h2 className="col-span-2">
-                    Positioned for lasting success
-                </h2>
-                <p>Focusing strictly on tangible engineering outcomes, technical agility, and ironclad data security.</p>
+                <TextRevealScroll
+                    as="h2"
+                    className="col-span-2"
+                    text="Positioned for lasting success"
+                />
+                <TextRevealScroll
+                    as="p"
+                    text="Focusing strictly on tangible engineering outcomes, technical agility, and ironclad data security."
+                />
             </div>
 
             <div className="flex flex-col md:flex-row items-start gap-4">

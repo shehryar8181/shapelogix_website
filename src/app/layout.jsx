@@ -1,6 +1,7 @@
 import { Geist, Orbitron } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import Footer from "@/layouts/Footer";
 import Header from "@/layouts/Header";
 
 const geistSans = Geist({
@@ -25,8 +26,11 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${orbitron.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <Header />
+          {children}
+        </SmoothScroll>
+        <Footer />
       </body>
     </html>
   );
