@@ -62,7 +62,6 @@ export default function TextRevealScroll({
                     start: animStart,
                     end: animEnd,
                     scrub: 3,
-                    markers: true,
                 },
             });
         }, textRef);
