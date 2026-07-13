@@ -73,24 +73,9 @@ export default function Services() {
         <section className="services wrapper relative py-20! md:py-30! lg:py-[10vw]! bg-black">
             <div className="relative z-11 grid grid-cols-1 lg:grid-cols-[1fr_3fr] lg:items-start gap-8 lg:gap-[2vw]">
                 <div className="lg:sticky lg:top-[30%] lg:self-start h-fit">
-                    <TextRevealScroll
-                        as="span"
-                        start="top 85%"
-                        className="text-secondary"
-                        text="// Shapelogix services"
-                    />
-                    <TextRevealScroll
-                        as="h2"
-                        start="top 85%"
-                        className="text-white mt-3 mb-4 lg:mb-[1.5vw] block!"
-                        text="Our Focus"
-                    />
-                    <TextRevealScroll
-                        as="p"
-                        start="top 85%"
-                        className="text-secondary block"
-                        text="A complete yet focused range of services, created to support ambitious brands at every stage of their growth journey."
-                    />
+                    <span className="text-secondary">// Shapelogix services</span>
+                    <h2 className="text-white mt-3 mb-4 lg:mb-[1.5vw] block!">Our Focus</h2>
+                    <p className="text-secondary block">A complete yet focused range of services, created to support ambitious brands at every stage of their growth journey.</p>
                 </div>
 
                 <div>

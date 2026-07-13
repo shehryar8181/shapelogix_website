@@ -64,13 +64,13 @@ export default function Projects() {
                 <TextRevealScroll
                     as="h2"
                     start="top 85%"
-                    className="col-span-2 block"
+                    className="col-span-2 block!"
                     text="Created with clear purpose"
                 />
                 <TextRevealScroll
                     as="p"
                     start="top 85%"
-                    className="block"
+                    className="block!"
                     text="Real projects, real challenges, and real results, crafted with clarity, creativity, and purpose."
                 />
             </div>
@@ -81,7 +81,7 @@ export default function Projects() {
                         <TextRevealScroll
                             as="h5"
                             start="top 85%"
-                            className="text-foreground! font-semibold! block"
+                            className="text-foreground! font-semibold! block!"
                             text="A curated selection of work shaped by strategy, creativity, and thoughtful execution, crafted to help brands stand out and grow with confidence."
                         />
 
@@ -89,7 +89,7 @@ export default function Projects() {
                             <TextRevealScroll
                                 as="span"
                                 start="top 85%"
-                                className="text-secondary block mb-2 lg:mb-[0.5vw]"
+                                className="text-secondary block! mb-2 lg:mb-[0.5vw]"
                                 text="Team"
                             />
                             <h3 className="font-bold! leading-none!">
@@ -129,33 +129,33 @@ export default function Projects() {
                                         <TextRevealScroll
                                             as="h4"
                                             start="top 85%"
-                                            className="font-bold! text-foreground! mb-2 lg:mb-[0.5vw] block"
+                                            className="font-bold! text-foreground! mb-2 lg:mb-[0.5vw] block!"
                                             text={project.title}
                                         />
                                         <TextRevealScroll
                                             as="p"
                                             start="top 85%"
-                                            className="text-secondary! block"
+                                            className="text-secondary! block!"
                                             text={project.subtitle}
                                         />
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-4 lg:gap-[1vw]">
                                         <div>
-                                            <span className="text-secondary block mb-1">Year</span>
+                                            <span className="text-secondary block! mb-1">Year</span>
                                             <TextRevealScroll
                                                 as="h6"
                                                 start="top 85%"
-                                                className="font-bold! text-foreground! block"
+                                                className="font-bold! text-foreground! block!"
                                                 text={project.year}
                                             />
                                         </div>
                                         <div>
-                                            <span className="text-secondary block mb-1">Client</span>
+                                            <span className="text-secondary block! mb-1">Client</span>
                                             <TextRevealScroll
                                                 as="h6"
                                                 start="top 85%"
-                                                className="font-bold! text-foreground! block"
+                                                className="font-bold! text-foreground! block!"
                                                 text={project.client}
                                             />
                                         </div>
@@ -164,7 +164,7 @@ export default function Projects() {
                                     <TextRevealScroll
                                         as="p"
                                         start="top 85%"
-                                        className="text-secondary! max-w-[42ch] block"
+                                        className="text-secondary! max-w-[42ch] block!"
                                         text={project.description}
                                     />
 
@@ -180,7 +180,7 @@ export default function Projects() {
 
             <div>
                 <div className="grid grid-cols-1 lg:grid-cols-[0.715fr_2.15fr]">
-                    <div className="py-4 lg:py-[1.1vw] hidden md:block">
+                    <div className="py-4 lg:py-[1.1vw] hidden md:block!">
                         <TextRevealScroll
                             as="span"
                             start="top 85%"
@@ -194,7 +194,7 @@ export default function Projects() {
                             <TextRevealScroll
                                 as="h5"
                                 start="top 85%"
-                                className="font-semibold! text-secondary! block"
+                                className="font-semibold! text-secondary! block!"
                                 text="Keep exploring Our work"
                             />
                         </div>
