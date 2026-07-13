@@ -39,7 +39,12 @@ function MenuToggleIcon({ open }) {
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const lenis = useLenis();
+
+    useLenis((instance) => {
+        setScrolled(instance.scroll > 24);
+    });
 
     useEffect(() => {
         if (menuOpen) {
@@ -59,6 +64,8 @@ export default function Header() {
         };
     }, [menuOpen, lenis]);
 
+    const solidBg = scrolled || menuOpen;
+
     return (
         <header className="fixed top-0 left-0 w-full z-50">
             <div
@@ -70,7 +77,11 @@ export default function Header() {
                 </div>
             </div>
 
-            <div className="relative z-10 wrapper flex items-center justify-between py-4 lg:py-[1.2vw] bg-transparent">
+            <div
+                className={`relative z-10 wrapper flex items-center justify-between py-4 lg:py-[1.2vw] transition-colors duration-900 ${
+                    solidBg ? "bg-background" : "bg-transparent"
+                }`}
+            >
                 <h1 className="text-xl! lg:text-[1.5vw]!">
                     <span className="text-xl! lg:text-[1.5vw]!">Shape</span>logix
                 </h1>
