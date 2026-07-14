@@ -1,4 +1,11 @@
-export const navLinks = ["Home", "Services", "Projects", "About", "Blogs", "Contact"];
+export const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "#" },
+    { label: "Projects", href: "#" },
+    { label: "About", href: "/about" },
+    { label: "Blogs", href: "#" },
+    { label: "Contact", href: "#" },
+];
 
 export const services = [
     "AI Software Development",

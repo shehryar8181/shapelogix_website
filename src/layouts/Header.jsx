@@ -1,7 +1,7 @@
 "use client";
 
 import { useLenis } from "lenis/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderMenu from "./HeaderMenu";
 
 function MenuToggleIcon({ open }) {
@@ -40,15 +40,32 @@ function MenuToggleIcon({ open }) {
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const lastScrollRef = useRef(0);
     const lenis = useLenis();
 
     useLenis((instance) => {
-        setScrolled(instance.scroll > 24);
+        const y = instance.scroll;
+        const prev = lastScrollRef.current;
+        const delta = y - prev;
+
+        setScrolled(y > 24);
+
+        if (menuOpen) {
+            setHidden(false);
+        } else if (y < 48) {
+            setHidden(false);
+        } else if (Math.abs(delta) > 2) {
+            setHidden(delta > 0);
+        }
+
+        lastScrollRef.current = y;
     });
 
     useEffect(() => {
         if (menuOpen) {
             lenis?.stop();
+            setHidden(false);
             document.documentElement.style.overflow = "hidden";
             document.body.style.overflow = "hidden";
         } else {
@@ -67,7 +84,11 @@ export default function Header() {
     const solidBg = scrolled || menuOpen;
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50">
+        <header
+            className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-out ${
+                hidden ? "-translate-y-full" : "translate-y-0"
+            }`}
+        >
             <div
                 className={`fixed top-0 left-0 w-full overflow-hidden bg-background text-foreground transition-[max-height] duration-500 ease-in-out ${menuOpen ? "max-h-screen pointer-events-auto" : "max-h-0 pointer-events-none"}`}
                 aria-hidden={!menuOpen}
@@ -78,7 +99,7 @@ export default function Header() {
             </div>
 
             <div
-                className={`relative z-10 wrapper flex items-center justify-between py-4 lg:py-[1.2vw] transition-colors duration-900 ${
+                className={`relative z-10 wrapper flex items-center justify-between py-4 lg:py-[1.2vw] transition-colors duration-300 ${
                     solidBg ? "bg-background" : "bg-transparent"
                 }`}
             >

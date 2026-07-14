@@ -1,21 +1,15 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { PRELOADER_EVENT } from "./Preloader";
+import { PAGE_TRANSITION_EVENT } from "./PageTransition";
 
 gsap.registerPlugin(SplitText);
 
-function runTextAnimation(el, options) {
-    const {
-        effect: animEffect,
-        duration: animDuration,
-        stagger: animStagger,
-        delay: animDelay,
-    } = options;
-
-    if (animEffect === "bounce") {
+function runTextAnimation(el, { effect, duration, stagger, delay }) {
+    if (effect === "bounce") {
         const split = SplitText.create(el, {
             type: "chars",
             charsClass: "text-animate-char",
@@ -27,12 +21,11 @@ function runTextAnimation(el, options) {
         gsap.to(split.chars, {
             y: 0,
             opacity: 1,
-            stagger: animStagger ?? 0.3,
-            duration: animDuration ?? 1,
-            delay: animDelay,
+            stagger: stagger ?? 0.3,
+            duration: duration ?? 1,
+            delay,
             ease: "bounce.out",
         });
-
         return;
     }
 
@@ -41,18 +34,29 @@ function runTextAnimation(el, options) {
         wordsClass: "text-animate-word",
     });
 
+    split.words.forEach((word) => {
+        const mask = document.createElement("div");
+        mask.className = "text-animate-mask";
+        mask.style.display = "inline-block";
+        mask.style.overflow = "hidden";
+        mask.style.verticalAlign = "bottom";
+        word.parentNode.insertBefore(mask, word);
+        mask.appendChild(word);
+    });
+
     gsap.set(split.words, {
+        display: "inline-block",
         whiteSpace: "nowrap",
-        clipPath: "inset(0 0% 100% 0)",
+        yPercent: 110,
     });
     gsap.set(el, { visibility: "visible" });
 
     gsap.to(split.words, {
-        clipPath: "inset(0 0% -4px 0)",
-        duration: animDuration ?? 1.8,
+        yPercent: 0,
+        duration: duration ?? 1.8,
         ease: "power4.inOut",
-        stagger: animStagger ?? 0.01,
-        delay: animDelay,
+        stagger: stagger ?? 0.01,
+        delay,
     });
 }
 
@@ -69,32 +73,58 @@ export default function TextAnimate({
     const optionsRef = useRef({ effect, duration, stagger, delay });
     optionsRef.current = { effect, duration, stagger, delay };
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (!textRef.current || !text) return;
 
         let ctx;
-        let started = false;
+        let cancelled = false;
+        let raf1 = 0;
+        let raf2 = 0;
 
-        const start = () => {
-            if (started || !textRef.current) return;
-            started = true;
+        const play = () => {
+            if (cancelled || !textRef.current) return;
 
             ctx = gsap.context(() => {
                 runTextAnimation(textRef.current, optionsRef.current);
             }, textRef);
         };
 
-        if (typeof window !== "undefined" && window.__preloaderDone) {
-            start();
+        const arm = () => {
+            // Double rAF: wait until after paint so SplitText measures a settled layout on soft navigations.
+            raf1 = requestAnimationFrame(() => {
+                if (cancelled) return;
+                raf2 = requestAnimationFrame(() => {
+                    if (cancelled) return;
+
+                    if (document.fonts?.status === "loading") {
+                        document.fonts.ready.then(() => {
+                            if (!cancelled) play();
+                        });
+                        return;
+                    }
+
+                    play();
+                });
+            });
+        };
+
+        if (typeof window !== "undefined" && window.__pageTransitionActive) {
+            window.addEventListener(PAGE_TRANSITION_EVENT, arm, { once: true });
+        } else if (typeof window !== "undefined" && window.__preloaderDone) {
+            arm();
         } else {
-            window.addEventListener(PRELOADER_EVENT, start, { once: true });
+            window.addEventListener(PRELOADER_EVENT, arm, { once: true });
         }
 
         return () => {
-            window.removeEventListener(PRELOADER_EVENT, start);
+            cancelled = true;
+            cancelAnimationFrame(raf1);
+            cancelAnimationFrame(raf2);
+            window.removeEventListener(PRELOADER_EVENT, arm);
+            window.removeEventListener(PAGE_TRANSITION_EVENT, arm);
             ctx?.revert();
         };
-    }, [text]);
+    }, [text, effect]);
 
     return (
         <Component

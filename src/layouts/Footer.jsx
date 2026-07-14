@@ -41,11 +41,11 @@ export default function Footer() {
                         <nav className="flex flex-col gap-3 lg:gap-[0.8vw]">
                             {navLinks.map((link) => (
                                 <Link
-                                    key={link}
-                                    href="#"
+                                    key={link.label}
+                                    href={link.href}
                                     className="group inline-flex items-center gap-2 text-white! hover:text-primary! transition-colors"
                                 >
-                                    <h5 className="text-base lg:text-[1vw] font-semibold!">{link}</h5>
+                                    <h5 className="text-base lg:text-[1vw] font-semibold!">{link.label}</h5>
                                     <ArrowUpRight className="size-4 lg:size-[1.3vw] opacity-70 group-hover:opacity-100" />
                                 </Link>
                             ))}

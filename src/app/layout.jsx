@@ -2,6 +2,7 @@ import { Geist, Orbitron } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Preloader from "@/components/providers/Preloader";
+import PageTransition from "@/components/providers/PageTransition";
 import Footer from "@/layouts/Footer";
 import Header from "@/layouts/Header";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col font-sans">
         <Preloader />
+        <PageTransition />
         <SmoothScroll>
           <Header />
           {children}
