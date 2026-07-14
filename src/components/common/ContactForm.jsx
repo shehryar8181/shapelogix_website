@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Link from "next/link";
 
 const fields = [
     { label: "Name", placeholder: "Umer Aziz", full: true },
@@ -62,7 +63,11 @@ export default function ContactForm() {
 
                     <div className="flex items-end justify-between">
                         <p className="py-3 lg:px-[1vw] lg:py-[0.8vw] text-secondary max-w-[32ch]">
-                            By submitting, I confirm I&apos;ve read and agree with Privacy and Cookie Policies.
+                            By submitting, I confirm I&apos;ve read and agree with{" "}
+                            <Link href="/privacy" className="text-foreground! underline-offset-2 hover:underline hover:text-primary">
+                                Privacy
+                            </Link>{" "}
+                            and Cookie Policies.
                         </p>
                         <div className="p-2 lg:p-[0.6vw]">
                             <Button variant="black" className="w-full bg-black! text-white! md:min-w-[20vw]">

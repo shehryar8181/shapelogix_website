@@ -36,7 +36,7 @@ function runTextAnimation(el, { effect, duration, stagger, delay }) {
 
     split.words.forEach((word) => {
         const mask = document.createElement("div");
-        mask.className = "text-animate-mask";
+        mask.className = "text-animate-mask pb-1";
         mask.style.display = "inline-block";
         mask.style.overflow = "hidden";
         mask.style.verticalAlign = "bottom";

@@ -1,28 +1,19 @@
+import { serviceNavLinks } from "./services";
+
 export const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Services", href: "#" },
+    // { label: "Services", href: "#" },
     { label: "Projects", href: "#" },
     { label: "About", href: "/about" },
-    { label: "Blogs", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Contact", href: "/contact" },
 ];
 
-export const services = [
-    "AI Software Development",
-    "Product Development",
-    "Application Development",
-    "Prototype Development",
-    "UI/UX Designing",
-    "Quality Assurance",
-    "Quality Assurance",
-    "Automated Delivery DevOps",
-    "Cyber Security",
-    "Cloud & Infrastructure",
-];
+export const services = serviceNavLinks;
 
 export const legalLinks = [
-    "Terms of services",
-    "Privacy Policy",
-    "Cookie Policy",
-    "Cookie Settings",
+    { label: "Terms of services", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Cookie Policy", href: "#" },
+    { label: "Cookie Settings", href: "#" },
 ];

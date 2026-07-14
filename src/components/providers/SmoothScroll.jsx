@@ -61,7 +61,6 @@ export default function SmoothScroll({ children }) {
             root
             options={{
                 autoRaf: false,
-                lerp: 0.1,
                 duration: 1.2,
             }}
         >

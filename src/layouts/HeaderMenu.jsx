@@ -52,11 +52,15 @@ export default function HeaderMenu({ onClose }) {
                         <div>
                             <span className="text-secondary block mb-3 lg:mb-[0.8vw]">Services</span>
                             <ul className="flex flex-col gap-2 lg:gap-[0.45vw]">
-                                {services.map((service, index) => (
-                                    <li key={`${service}-${index}`} className="mb-1">
-                                        <a href="#" onClick={onClose} className="text-secondary! hover:text-foreground! transition-colors">
-                                            {service}
-                                        </a>
+                                {services.map((service) => (
+                                    <li key={service.label} className="mb-1">
+                                        <Link
+                                            href={service.href}
+                                            onClick={onClose}
+                                            className="text-secondary! hover:text-foreground! transition-colors"
+                                        >
+                                            {service.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -68,10 +72,14 @@ export default function HeaderMenu({ onClose }) {
                             <span className="text-secondary block mb-3 lg:mb-[0.8vw]">Legal</span>
                             <ul className="flex flex-col gap-2 lg:gap-[0.45vw]">
                                 {legalLinks.map((link) => (
-                                    <li key={link}>
-                                        <a href="#" onClick={onClose} className="text-secondary! hover:text-foreground! transition-colors">
-                                            {link}
-                                        </a>
+                                    <li key={link.label}>
+                                        <Link
+                                            href={link.href}
+                                            onClick={onClose}
+                                            className="text-secondary! hover:text-foreground! transition-colors"
+                                        >
+                                            {link.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

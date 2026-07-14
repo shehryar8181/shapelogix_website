@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLenis } from "lenis/react";
 import { useEffect, useRef, useState } from "react";
 import HeaderMenu from "./HeaderMenu";
@@ -103,9 +104,9 @@ export default function Header() {
                     solidBg ? "bg-background" : "bg-transparent"
                 }`}
             >
-                <h1 className="text-xl! lg:text-[1.5vw]!">
-                    <span className="text-xl! lg:text-[1.5vw]!">Shape</span>logix
-                </h1>
+                <Link href="/" aria-label="Shapelogix home" className="text-xl! lg:text-[1.5vw]! font-display font-bold leading-none">
+                    <span className="text-xl! lg:text-[1.5vw]! text-primary! font-bold!">Shape</span>logix
+                </Link>
                 <button
                     type="button"
                     aria-label={menuOpen ? "Close menu" : "Open menu"}

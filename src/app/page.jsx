@@ -6,6 +6,7 @@ import Process from "@/components/home/Process";
 import Projects from "@/components/home/Projects";
 import SocialProof from "@/components/home/SocialProof";
 import InsightsSection from "@/components/common/InsightsSection";
+import CtaBanner from "@/components/common/CtaBanner";
 import ContactFormSection from "@/components/common/ContactForm";
 import NewsletterSection from "@/components/common/NewsletterSection";
 
@@ -26,6 +27,7 @@ export default function Home() {
       <Projects />
       <SocialProof />
       <InsightsSection />
+      <CtaBanner />
       <ContactFormSection />
       <NewsletterSection />
     </div>

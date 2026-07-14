@@ -28,9 +28,9 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${orbitron.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Preloader />
         <PageTransition />
         <SmoothScroll>
+          <Preloader />
           <Header />
           {children}
         </SmoothScroll>

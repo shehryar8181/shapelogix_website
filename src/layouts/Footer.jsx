@@ -54,11 +54,14 @@ export default function Footer() {
                         <div>
                             <span className="text-secondary block mb-3 lg:mb-[0.8vw]">Services</span>
                             <ul className="flex flex-col gap-2 lg:gap-[0.45vw]">
-                                {services.map((service, index) => (
-                                    <li key={`${service}-${index}`} className="mb-1">
-                                        <a href="#" className="text-secondary! hover:text-white! transition-colors">
-                                            {service}
-                                        </a>
+                                {services.map((service) => (
+                                    <li key={service.label} className="mb-1">
+                                        <Link
+                                            href={service.href}
+                                            className="text-secondary! hover:text-white! transition-colors"
+                                        >
+                                            {service.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -70,10 +73,13 @@ export default function Footer() {
                             <span className="text-secondary block mb-3 lg:mb-[0.8vw]">Legal</span>
                             <ul className="flex flex-col gap-2 lg:gap-[0.45vw]">
                                 {legalLinks.map((link) => (
-                                    <li key={link}>
-                                        <a href="#" className="text-secondary! hover:text-white! transition-colors">
-                                            {link}
-                                        </a>
+                                    <li key={link.label}>
+                                        <Link
+                                            href={link.href}
+                                            className="text-secondary! hover:text-white! transition-colors"
+                                        >
+                                            {link.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

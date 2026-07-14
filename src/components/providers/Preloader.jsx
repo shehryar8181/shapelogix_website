@@ -1,6 +1,7 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLenis } from "lenis/react";
 import gsap from "gsap";
 
 export const PRELOADER_EVENT = "preloader:complete";
@@ -8,7 +9,27 @@ export const PRELOADER_EVENT = "preloader:complete";
 export default function Preloader() {
     const panelRef = useRef(null);
     const brandRef = useRef(null);
+    const [active, setActive] = useState(true);
     const [done, setDone] = useState(false);
+    const lenis = useLenis();
+
+    useEffect(() => {
+        if (active) {
+            lenis?.stop();
+            document.documentElement.style.overflow = "hidden";
+            document.body.style.overflow = "hidden";
+        } else {
+            lenis?.start();
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+        }
+
+        return () => {
+            lenis?.start();
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+        };
+    }, [active, lenis]);
 
     useLayoutEffect(() => {
         if (!panelRef.current) return;
@@ -24,6 +45,7 @@ export default function Preloader() {
                     document.documentElement.classList.remove("preloader-active");
                     window.__preloaderDone = true;
                     window.dispatchEvent(new Event(PRELOADER_EVENT));
+                    setActive(false);
                     setDone(true);
                 },
             });
@@ -68,9 +90,9 @@ export default function Preloader() {
         >
             <p
                 ref={brandRef}
-                className="font-display text-white text-[10vw]! md:text-[6vw]! lg:text-[4vw]! font-bold leading-none tracking-tight"
+                className="font-display text-white text-[7.5vw]! md:text-[3.5vw]! lg:text-[1.5vw]! font-bold leading-none tracking-tight"
             >
-                <span className="text-primary text-[10vw]! md:text-[6vw]! lg:text-[4vw]!">Shape</span>logix
+                <span className="text-primary text-[7.5vw]! md:text-[3.5vw]! lg:text-[1.5vw]!">Shape</span>logix
             </p>
         </div>
     );

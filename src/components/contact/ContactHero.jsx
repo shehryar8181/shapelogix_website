@@ -1,30 +1,14 @@
 import TextAnimate from "@/components/providers/TextAnimate";
 
-function getTitleParts(title, highlight) {
-    if (!title) return [];
-    if (!highlight || !title.includes(highlight)) {
-        return [{ text: title, accent: false }];
-    }
-
-    const index = title.indexOf(highlight);
-
-    return [
-        { text: title.slice(0, index), accent: false },
-        { text: highlight, accent: true },
-        { text: title.slice(index + highlight.length), accent: false },
-    ].filter((part) => part.text);
-}
-
-export default function PageHero({
-    title = "",
-    highlight = "",
-    description = "",
-    eyebrow = "",
+export default function ContactHero({
+    eyebrow = "// Contact",
+    title = "Let's define what next",
+    description = "We'll help translate your ideas into thoughtful strategy and execution.",
+    email = "hi@shapdelogix.agency",
+    phone = "(+92) 999 888 777",
 }) {
-    const titleParts = getTitleParts(title, highlight);
-
     return (
-        <section className="relative h-svh w-full overflow-hidden">
+        <section className="contact-hero relative h-svh w-full overflow-hidden">
             <img
                 src="/texture.svg"
                 alt=""
@@ -32,7 +16,7 @@ export default function PageHero({
                 className="fixed inset-0 h-screen w-screen object-cover pointer-events-none z-10 px-[2vw]"
             />
 
-            <div className="wrapper relative z-11 flex h-full flex-col justify-center -mt-3 md:mt-[-3vw] lg:mt-[-6vw]">
+            <div className="wrapper relative z-11 flex h-full flex-col justify-center pt-28 pb-16 md:pt-[8vw] md:pb-[4vw]">
                 {eyebrow ? (
                     <TextAnimate
                         as="span"
@@ -44,16 +28,13 @@ export default function PageHero({
 
                 <div className="grid grid-cols-1 md:grid-cols-12 items-end gap-6 md:gap-[2vw]">
                     {title ? (
-                        <h1 className="md:col-span-7 lg:col-span-8 md:max-w-[15ch]">
-                            {titleParts.map((part, index) => (
-                                <TextAnimate
-                                    key={`${part.text}-${index}`}
-                                    as="span"
-                                    delay={0.3 + index * 0.12}
-                                    text={part.text}
-                                    className={part.accent ? "text-primary!" : "text-foreground!"}
-                                />
-                            ))}
+                        <h1 className="md:col-span-7 lg:col-span-8 md:max-w-[12ch]">
+                            <TextAnimate
+                                as="span"
+                                delay={0.3}
+                                text={title}
+                                className="text-foreground!"
+                            />
                         </h1>
                     ) : null}
 
@@ -61,19 +42,36 @@ export default function PageHero({
                         <div className="md:col-span-5 lg:col-span-4 md:pb-1">
                             <TextAnimate
                                 as="p"
-                                delay={0.55}
+                                delay={0.5}
                                 className="text-secondary leading-[140%]!"
                                 text={description}
                             />
                         </div>
                     ) : null}
                 </div>
+
+                <div className="mt-12 md:mt-[4vw] flex flex-col gap-1">
+                    <a
+                        href={`mailto:${email}`}
+                        className="text-secondary! text-xl! md:text-2xl! lg:text-[1.8vw]! font-semibold! transition-colors hover:text-foreground"
+                    >
+                        {email}
+                    </a>
+                    <a
+                        href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                        className="text-secondary transition-colors hover:text-foreground"
+                    >
+                        {phone}
+                    </a>
+                </div>
             </div>
 
-            <h1 className="absolute z-1 bottom-0 left-0 text-[15.7vw]! px-[1vw] leading-none opacity-5">
+            <h1
+                aria-hidden="true"
+                className="absolute z-1 bottom-0 left-0 text-[15.7vw]! px-[1vw] leading-none opacity-5"
+            >
                 <TextAnimate
                     as="span"
-                    // delay={0.5}
                     text="Shape"
                     effect="bounce"
                     className="text-[15.7vw]! text-primary!"
@@ -82,7 +80,6 @@ export default function PageHero({
                     as="span"
                     text="logix"
                     effect="bounce"
-                    // delay={0.5}
                     className="text-[15.7vw]! text-black!"
                 />
             </h1>
